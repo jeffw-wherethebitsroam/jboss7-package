@@ -11,7 +11,7 @@ same directory as this code. You will also need to adjust the paths in:
 - Makefile
 - jboss7
 - postinstall-pak
-- preremove-pakpreremove
+- preremove-pak
 
 Run build.sh to run checkinstall and build the package.
 
