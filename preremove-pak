@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+  # only remove in remove/deconfigure so we don't disrupt users' preferences
+  remove|deconfigure)
+    if [ -L /opt/amu/jboss7 ] ;
+    then
+      rm /opt/amu/jboss7
+    fi
+    ;;
+
+  upgrade|failed-upgrade)
+    ;;
+
+  *)
+    echo "prerm called with unknown argument \`$1'" >&2
+    exit 0
+    ;;
+esac
+
+exit 0
+

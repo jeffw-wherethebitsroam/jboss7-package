@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+  configure)
+    if [ -z $2 ] && [ ! -e /opt/amu/jboss7 ] ; 
+    then
+      ln -s /opt/amu/jboss-as-7.1.1.Final /opt/amu/jboss7
+    fi
+    ;;
+  abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+  *)
+    echo "postinst called with unknown argument \`$1'" >&2
+    exit 1
+    ;;
+esac
+
+# Automatically added by dh_installinit
+if [ -x "/etc/init.d/jboss7" ]; then
+        update-rc.d jboss7 defaults >/dev/null || exit $?
+fi
+# End automatically added section
+
+
+exit 0
